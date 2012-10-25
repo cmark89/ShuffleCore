@@ -18,17 +18,7 @@ namespace WordShuffler
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            if (ShuffleCore.spinning)
-            {
-                ShuffleCore.StopWordSpin();
-                startButton.Text = "Start";
-            }
-            else
-            {
-                ShuffleCore.StartWordSpin();
-                startButton.Text = "Stop";
-            }
-            
+            ShuffleCore.StartWordSpin();
         }
 
         private void stopButton_Click(object sender, EventArgs e)
