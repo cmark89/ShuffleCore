@@ -1,1 +1,0 @@
-﻿put,words,here,separated,by,commas,日本語でもOK,
