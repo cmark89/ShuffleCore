@@ -78,10 +78,30 @@ namespace WordShuffler
 
             Console.WriteLine("/Decks contains " + Directory.GetFiles(dir + "\\Decks\\").Length + " files.");
             string[] deckFiles = Directory.GetFiles(dir + "\\Decks\\");
-            foreach (string s in deckFiles)
+            if (deckFiles.Length > 0)
             {
-                ReadTextFile(s);
+                foreach (string s in deckFiles)
+                {
+                    ReadTextFile(s);
+                }
+            }         
+            else
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(dir + "\\Decks\\Default.txt", false, Encoding.Unicode))
+                    {
+                        sw.WriteLine("put, words, here, separated, by commas, 日本語、でもOK");
+                    }
+
+                    ReadTextFile(dir + "\\Decks\\Default.txt");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error", e.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
 
             if (deckCollection.Count > 0)
             {
@@ -185,8 +205,12 @@ namespace WordShuffler
             List<string> newDeck = new List<string>();
             for(int i = 0; i < words.Length; i++)
             {
-                
+                //Clean the edges of the word
                 words[i] = words[i].Trim();
+
+                //Remove any newlines that may have found their way into the text
+                words[i] = words[i].Replace(System.Environment.NewLine, "");
+                
                 if (!String.IsNullOrWhiteSpace(words[i]))
                 {
                     newDeck.Add(words[i]);
