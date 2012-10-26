@@ -33,12 +33,13 @@
             this.shownWord = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
             this.drawCardCheckbox = new System.Windows.Forms.CheckBox();
+            this.deckSelectBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(97, 162);
+            this.startButton.Location = new System.Drawing.Point(97, 200);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(128, 47);
             this.startButton.TabIndex = 0;
@@ -51,7 +52,7 @@
             this.shownWord.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.shownWord.AutoSize = true;
             this.shownWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shownWord.Location = new System.Drawing.Point(136, 49);
+            this.shownWord.Location = new System.Drawing.Point(136, 82);
             this.shownWord.Name = "shownWord";
             this.shownWord.Size = new System.Drawing.Size(105, 55);
             this.shownWord.TabIndex = 2;
@@ -60,7 +61,7 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(292, 162);
+            this.resetButton.Location = new System.Drawing.Point(292, 200);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(75, 23);
             this.resetButton.TabIndex = 3;
@@ -73,7 +74,7 @@
             this.drawCardCheckbox.AutoSize = true;
             this.drawCardCheckbox.Checked = true;
             this.drawCardCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.drawCardCheckbox.Location = new System.Drawing.Point(281, 191);
+            this.drawCardCheckbox.Location = new System.Drawing.Point(281, 229);
             this.drawCardCheckbox.Name = "drawCardCheckbox";
             this.drawCardCheckbox.Size = new System.Drawing.Size(96, 17);
             this.drawCardCheckbox.TabIndex = 4;
@@ -81,11 +82,22 @@
             this.drawCardCheckbox.UseVisualStyleBackColor = true;
             this.drawCardCheckbox.CheckedChanged += new System.EventHandler(this.drawCardCheckbox_CheckedChanged);
             // 
+            // deckSelectBox
+            // 
+            this.deckSelectBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.deckSelectBox.FormattingEnabled = true;
+            this.deckSelectBox.Location = new System.Drawing.Point(234, 12);
+            this.deckSelectBox.Name = "deckSelectBox";
+            this.deckSelectBox.Size = new System.Drawing.Size(133, 21);
+            this.deckSelectBox.TabIndex = 5;
+            this.deckSelectBox.SelectedIndexChanged += new System.EventHandler(this.deckSelectBox_SelectedIndexChanged_1);
+            // 
             // ShuffleCoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 219);
+            this.ClientSize = new System.Drawing.Size(379, 251);
+            this.Controls.Add(this.deckSelectBox);
             this.Controls.Add(this.drawCardCheckbox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.shownWord);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.Label shownWord;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.CheckBox drawCardCheckbox;
+        private System.Windows.Forms.ComboBox deckSelectBox;
 
     }
 }

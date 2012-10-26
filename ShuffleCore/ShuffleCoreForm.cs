@@ -66,5 +66,21 @@ namespace WordShuffler
         {
             ShuffleCore.discardDrawnCards = drawCardCheckbox.Checked;
         }
+
+        public void AddDeckToSelection(string s)
+        {
+            deckSelectBox.Items.Add(s);
+        }
+
+        public void SetDropdownDefault()
+        {
+            deckSelectBox.SelectedIndex = 0;
+        }
+
+        private void deckSelectBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ShuffleCore.SetCurrentDeck(deckSelectBox.SelectedIndex);
+            SetLabelColor(Color.Black);
+        }
     }
 }

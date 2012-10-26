@@ -11,6 +11,8 @@ namespace WordShuffler
 {
     public static class ShuffleCore
     {
+        static List<List<string>> deckCollection;
+
         //Stores a list of all words in the deck (base)
         static List<string> wordDeck;
 
@@ -58,17 +60,98 @@ namespace WordShuffler
             //Initialize variables here
             spinSpeed = 80;
 
+            deckCollection = new List<List<string>>();
             wordDeck = new List<string>();
             currentWordDeck = new List<string>();
 
-            //Open the text file.
-            ReadTextFile("wordList.txt");
+            string dir = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine(dir);
 
-            if(currentWordDeck.Count > 0)
+            //Check if the deck directory exists.
+            if(!Directory.Exists(dir + "/Decks"))
             {
-                displayedWordIndex = 0;
+                CreateDeckFolder(dir);
+            }
+
+            //Read all the files in the deck folder and add each of them to the overall list of decks.
+
+
+            Console.WriteLine("/Decks contains " + Directory.GetFiles(dir + "\\Decks\\").Length + " files.");
+            string[] deckFiles = Directory.GetFiles(dir + "\\Decks\\");
+            foreach (string s in deckFiles)
+            {
+                ReadTextFile(s);
+            }
+
+            if (deckCollection.Count > 0)
+            {
+                //Set to zero for now
+                SetCurrentDeck(0);
+                Program.form.SetDropdownDefault();
             }
         }
+
+        //Returns the simple file name given a path
+        public static string GetFileName(string path)
+        {
+            string[] s = path.Split('\\');
+            return s[s.Length - 1];
+        }
+
+        //Returns the name of just the file, sans the extension
+        public static string GetDeckName(string path)
+        {
+            string[] s = path.Split('\\');
+            string filename = s[s.Length - 1];
+            s = filename.Split('.');
+            return s[0];
+        }
+
+
+        //Creates the files directory if it does not already exist
+        public static void CreateDeckFolder(string dir)
+        {
+            Console.WriteLine("Creating /Decks.");
+            //If the deck directory doesn't exist, create it
+            Directory.CreateDirectory(dir + "/Decks");
+
+            MoveLocalTextFiles(dir);
+        }
+
+
+        //Move all text files into the deck folder if possible.
+        public static void MoveLocalTextFiles(string dir)
+        {
+            
+            string[] pretxts = Directory.GetFiles(dir, "*.txt", SearchOption.TopDirectoryOnly);
+            Console.WriteLine("Found " + pretxts.Length + " compatible text files:");
+
+            foreach (string s in pretxts)
+            {
+                //Ignore if readme or changelog
+                if (s == dir + "readme.txt" || s == dir + "changelog.txt")
+                {
+                    Console.WriteLine(s + " found.  Ignoring.");
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Move file " + GetFileName(s));
+                    Console.WriteLine("Source: " + dir + GetFileName(s));
+                    Console.WriteLine("Destination: " + dir + "Decks\\" + GetFileName(s));
+                    try
+                    {
+                        File.Move(s, dir + "Decks\\" + GetFileName(s));
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
 
         public static void ReadTextFile(string filePath)
         {
@@ -79,7 +162,7 @@ namespace WordShuffler
                     Console.WriteLine("File read.");
                     string words = sr.ReadToEnd();
                     Console.WriteLine(words);
-                    PrepareWordDeck(words);
+                    AddNewDeck(PrepareWordDeck(words), GetDeckName(filePath));
                 }
             }
             catch(Exception e)
@@ -89,7 +172,8 @@ namespace WordShuffler
             }
         }
 
-        public static void PrepareWordDeck(string wordList)
+
+        public static List<string> PrepareWordDeck(string wordList)
         {
             char[] splitChars = new char[]{
                 ',',
@@ -98,23 +182,46 @@ namespace WordShuffler
                 ','
             };
             string[] words = wordList.Split(splitChars);
-            wordDeck = new List<string>();
+            List<string> newDeck = new List<string>();
             for(int i = 0; i < words.Length; i++)
             {
                 
                 words[i] = words[i].Trim();
                 if (!String.IsNullOrWhiteSpace(words[i]))
                 {
-                    wordDeck.Add(words[i]);
+                    newDeck.Add(words[i]);
                     Console.WriteLine(words[i]);
                 }
                 else
                     continue;
             }
-            
-            currentWordDeck = new List<string>(wordDeck);
-            ShuffleWordDeck(currentWordDeck, 100);
+
+            ShuffleWordDeck(newDeck, newDeck.Count);
+            return newDeck;            
         }
+
+
+        public static void AddNewDeck(List<string> deck, string deckName)
+        {
+            //Only add the deck to the display if it contains at least 1 word to show
+            if (deck.Count > 0)
+            {
+                deckCollection.Add(deck);
+                Program.form.AddDeckToSelection(deckName);
+            }
+        }
+
+
+        public static void SetCurrentDeck(int i)
+        {
+            wordDeck = deckCollection[i];
+            currentWordDeck = new List<string>(wordDeck);
+            ShuffleWordDeck(currentWordDeck, currentWordDeck.Count);
+
+            if (currentWordDeck.Count > 0)
+                displayedWordIndex = 0;
+        }
+
      
         public static void ShuffleWordDeck(List<string> deck, int timesToShuffle)
         {
