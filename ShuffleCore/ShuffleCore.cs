@@ -91,14 +91,25 @@ namespace WordShuffler
 
         public static void PrepareWordDeck(string wordList)
         {
-            string[] words = wordList.Split(',');
+            char[] splitChars = new char[]{
+                ',',
+                '、',
+                '，',
+                ','
+            };
+            string[] words = wordList.Split(splitChars);
             wordDeck = new List<string>();
             for(int i = 0; i < words.Length; i++)
             {
                 
                 words[i] = words[i].Trim();
-                wordDeck.Add(words[i]);
-                Console.WriteLine(words[i]);
+                if (!String.IsNullOrWhiteSpace(words[i]))
+                {
+                    wordDeck.Add(words[i]);
+                    Console.WriteLine(words[i]);
+                }
+                else
+                    continue;
             }
             
             currentWordDeck = new List<string>(wordDeck);

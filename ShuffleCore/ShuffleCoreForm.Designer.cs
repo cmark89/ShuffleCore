@@ -105,6 +105,7 @@
         private System.Windows.Forms.Label shownWord;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.CheckBox drawCardCheckbox;
+
     }
 }
 
