@@ -1,5 +1,5 @@
 ﻿//ShuffleCore
-//v1.0
+//v1.1
 //Made by Corey!
 
 
