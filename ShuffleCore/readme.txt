@@ -5,10 +5,11 @@
 
 HOW TO USE THIS PROGRAM:
 ------------------------
-1. Open wordList.txt (found in the same folder) using Notepad.
+1. Create a .txt file using Notepad.
 2. Add all the words you wish to use.  Separate each word with a comma (,).  Example: man, dog, cat, car, etc.  
-3. Save the changes to wordList.txt.
+3. Save the file in the Decks folder.
 4. Open ShuffleCore.
+5. From the dropdown menu, choose the name of the deck to load.  The name is the same as the filename.
 
 
 Notes:
@@ -19,5 +20,4 @@ Notes:
 
 
 Important Notes:
--This program will not run if wordList.txt is not with it!!
--If you update wordList.txt while the program is running, you must restart the program before the changes can be seen.
+-Any updates to .txt files will not be seen until the program is restarted.
