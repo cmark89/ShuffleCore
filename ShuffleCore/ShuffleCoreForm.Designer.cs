@@ -38,6 +38,7 @@
             // 
             // startButton
             // 
+            this.startButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startButton.Location = new System.Drawing.Point(97, 200);
             this.startButton.Name = "startButton";
@@ -61,6 +62,7 @@
             // 
             // resetButton
             // 
+            this.resetButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.resetButton.Location = new System.Drawing.Point(292, 200);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(75, 23);
@@ -71,6 +73,7 @@
             // 
             // drawCardCheckbox
             // 
+            this.drawCardCheckbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.drawCardCheckbox.AutoSize = true;
             this.drawCardCheckbox.Checked = true;
             this.drawCardCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -84,6 +87,7 @@
             // 
             // deckSelectBox
             // 
+            this.deckSelectBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deckSelectBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.deckSelectBox.FormattingEnabled = true;
             this.deckSelectBox.Location = new System.Drawing.Point(234, 12);
