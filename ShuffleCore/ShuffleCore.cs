@@ -6,6 +6,7 @@ using System.IO;
 using System.Timers;
 using System.Windows.Forms;
 using System.Drawing;
+using ShuffleCore.Properties;
 
 namespace WordShuffler
 {
@@ -58,7 +59,8 @@ namespace WordShuffler
         public static void Start()
         {
             //Initialize variables here
-            spinSpeed = 80;
+            spinSpeed = Settings.Default.ShuffleSpeed;
+            Program.form.SetLabelFontSize(Settings.Default.FontSize);
 
             deckCollection = new List<List<string>>();
             wordDeck = new List<string>();
@@ -334,6 +336,12 @@ namespace WordShuffler
         public static void SetLabelText(int index)
         {
             Program.form.SetLabelText(currentWordDeck[index]);
+        }
+
+        public static void UpdateSettings()
+        {
+            spinSpeed = Settings.Default.ShuffleSpeed;
+            Program.form.SetLabelFontSize(Settings.Default.FontSize);
         }
 
     }

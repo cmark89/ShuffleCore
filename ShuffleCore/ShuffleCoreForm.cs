@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ShuffleCore;
 
 namespace WordShuffler
 {
@@ -14,6 +15,9 @@ namespace WordShuffler
         public ShuffleCoreForm()
         {
             InitializeComponent();
+
+
+            new OptionsForm().Show();
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -48,6 +52,12 @@ namespace WordShuffler
         public void SetLabelColor(Color color)
         {
             shownWord.ForeColor = color;
+        }
+
+        public void SetLabelFontSize(int size)
+        {
+            shownWord.Font = new Font(shownWord.Font.FontFamily.Name, size);
+            SetLabelText(shownWord.Text);
         }
 
         private void resetButton_Click(object sender, EventArgs e)

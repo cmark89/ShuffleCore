@@ -34,6 +34,7 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.drawCardCheckbox = new System.Windows.Forms.CheckBox();
             this.deckSelectBox = new System.Windows.Forms.ComboBox();
+            this.optionsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startButton
@@ -96,11 +97,21 @@
             this.deckSelectBox.TabIndex = 5;
             this.deckSelectBox.SelectedIndexChanged += new System.EventHandler(this.deckSelectBox_SelectedIndexChanged_1);
             // 
+            // optionsButton
+            // 
+            this.optionsButton.Image = ((System.Drawing.Image)(resources.GetObject("optionsButton.Image")));
+            this.optionsButton.Location = new System.Drawing.Point(12, 12);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(22, 21);
+            this.optionsButton.TabIndex = 6;
+            this.optionsButton.UseVisualStyleBackColor = true;
+            // 
             // ShuffleCoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 251);
+            this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.deckSelectBox);
             this.Controls.Add(this.drawCardCheckbox);
             this.Controls.Add(this.resetButton);
@@ -122,6 +133,7 @@
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.CheckBox drawCardCheckbox;
         private System.Windows.Forms.ComboBox deckSelectBox;
+        private System.Windows.Forms.Button optionsButton;
 
     }
 }
