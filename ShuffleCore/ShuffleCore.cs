@@ -297,7 +297,7 @@ namespace WordShuffler
                 ResetDeck();
             }
 
-            ShuffleWordDeck(currentWordDeck, 25);
+            //ShuffleWordDeck(currentWordDeck, 25);
             
             timer = new System.Windows.Forms.Timer();
             timer.Interval = spinSpeed;
@@ -342,6 +342,8 @@ namespace WordShuffler
         {
             spinSpeed = Settings.Default.ShuffleSpeed;
             Program.form.SetLabelFontSize(Settings.Default.FontSize);
+            if(timer != null)
+                timer.Interval = spinSpeed;
         }
 
     }

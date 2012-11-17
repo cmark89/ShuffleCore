@@ -12,12 +12,13 @@ namespace WordShuffler
 {
     public partial class ShuffleCoreForm : Form
     {
+        private OptionsForm optionsForm;
+
         public ShuffleCoreForm()
         {
             InitializeComponent();
 
-
-            new OptionsForm().Show();
+            optionsForm = null;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -67,11 +68,6 @@ namespace WordShuffler
             ShuffleCore.ResetDeck();
         }
 
-        private void ShuffleCore_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void drawCardCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             ShuffleCore.discardDrawnCards = drawCardCheckbox.Checked;
@@ -92,5 +88,24 @@ namespace WordShuffler
             ShuffleCore.SetCurrentDeck(deckSelectBox.SelectedIndex);
             SetLabelColor(Color.Black);
         }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            if (optionsForm == null || !optionsForm.Visible)
+            {
+                optionsForm = new OptionsForm();
+                optionsForm.Show();
+            }
+            else
+            {
+                optionsForm.BringToFront();
+            }
+        }
+
+        private void ShuffleCoreForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

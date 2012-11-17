@@ -66,14 +66,30 @@ namespace ShuffleCore
 
         private void applyButton_Click(object sender, EventArgs e)
         {
+            SaveSettings();
+            this.Close();
+        }
+
+        private void defaultButton_Click(object sender, EventArgs e)
+        {
+            fontSizeTextBox.Text = Properties.Settings.Default.DefaultFontSize.ToString();
+            shuffleSpeedTextBox.Text = Properties.Settings.Default.DefaultShuffleSpeed.ToString();
+        }
+
+        //Save the settings in the text boxes to the Settings configuration
+        public void SaveSettings()
+        {
             Properties.Settings.Default.ShuffleSpeed = Int32.Parse(shuffleSpeedTextBox.Text);
             Properties.Settings.Default.FontSize = Int32.Parse(fontSizeTextBox.Text);
             Properties.Settings.Default.Save();
 
             WordShuffler.ShuffleCore.UpdateSettings();
-            this.Close();
         }
 
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

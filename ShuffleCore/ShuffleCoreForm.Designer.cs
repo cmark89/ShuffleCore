@@ -99,12 +99,13 @@
             // 
             // optionsButton
             // 
-            this.optionsButton.Image = ((System.Drawing.Image)(resources.GetObject("optionsButton.Image")));
             this.optionsButton.Location = new System.Drawing.Point(12, 12);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(22, 21);
+            this.optionsButton.Size = new System.Drawing.Size(66, 21);
             this.optionsButton.TabIndex = 6;
+            this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // ShuffleCoreForm
             // 
@@ -120,7 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShuffleCoreForm";
             this.Text = "ShuffleCore";
-            this.Load += new System.EventHandler(this.ShuffleCore_Load);
+            this.Load += new System.EventHandler(this.ShuffleCoreForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
