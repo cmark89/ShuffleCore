@@ -35,10 +35,17 @@ namespace ShuffleCore
             int numeral;
             if (!Int32.TryParse(shuffleSpeedTextBox.Text, out numeral))
             {
-                //The input was not a number, so ping the user and undo the input.
-                shuffleSpeedTextBox.Text = lastShuffleSpeedInput;
-                shuffleSpeedTextBox.SelectionStart = shuffleSpeedTextBox.Text.Length;
-                shuffleSpeedTextBox.SelectionLength = 0;
+                if (String.IsNullOrEmpty(shuffleSpeedTextBox.Text))
+                {
+                    lastShuffleSpeedInput = null;
+                }
+                else
+                {
+                    //The input was not a number, so ping the user and undo the input.
+                    shuffleSpeedTextBox.Text = lastShuffleSpeedInput;
+                    shuffleSpeedTextBox.SelectionStart = shuffleSpeedTextBox.Text.Length;
+                    shuffleSpeedTextBox.SelectionLength = 0;
+                }
             }
             else
             {
@@ -53,10 +60,17 @@ namespace ShuffleCore
             int numeral;
             if (!Int32.TryParse(fontSizeTextBox.Text, out numeral))
             {
-                //The input was not a number, so ping the user and undo the input.
-                fontSizeTextBox.Text = lastFontInput;
-                fontSizeTextBox.SelectionStart = fontSizeTextBox.Text.Length;
-                fontSizeTextBox.SelectionLength = 0;
+                if (String.IsNullOrEmpty(fontSizeTextBox.Text))
+                {
+                    lastFontInput = null;
+                }
+                else
+                {
+                    //The input was not a number, so ping the user and undo the input.
+                    fontSizeTextBox.Text = lastFontInput;
+                    fontSizeTextBox.SelectionStart = fontSizeTextBox.Text.Length;
+                    fontSizeTextBox.SelectionLength = 0;
+                }
             }
             else
             {
