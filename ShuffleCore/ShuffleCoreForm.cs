@@ -45,9 +45,12 @@ namespace WordShuffler
         {
             shownWord.Text = text;
             int x = this.Width;
+            int y = this.Height;
             int labelX = shownWord.Width;
+            int labelY = shownWord.Height;
 
             shownWord.Left = (x / 2) - (labelX / 2);
+            shownWord.Top = (y / 2) - (labelY / 2);
         }
 
         public void SetLabelColor(Color color)
